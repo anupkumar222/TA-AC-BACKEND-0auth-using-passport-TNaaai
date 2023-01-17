@@ -2,20 +2,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 
-//GitUser
-var gitUser = new Schema({
-    name: String,
-    email: {type: String, required: true, unique: true},
-    username: {type: String, required: true, unique: true},
-    photo: {type: String}
-
-}, {timestamps: true});
 
 
 //userSchema
 var userSchema = new Schema({
     first_name: {type: String, required: true},
-    last_name: {type: String, required: true},
+    last_name: {type: String},
     email: {type: String, required: true, unique: true},
     password: {type:String, minlength: 5},
     city: String,
@@ -44,4 +36,4 @@ userSchema.methods.verifyPassword = function (password, cb) {
 }
 
 module.exports = mongoose.model('User', userSchema);
-module.exports = mongoose.model('Gituser', gitUser);
+
