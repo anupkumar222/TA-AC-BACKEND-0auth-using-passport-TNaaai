@@ -5,11 +5,11 @@ var User = require('../models/Users');
 passport.use(new GitHubStrategy({
     clientID : process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: '/auth/github/callback'
+    callbackURL: '/users/auth/github/callback'
 }, (accessToken, refreshToken, profile, done) => {
     console.log(profile);
     var profileData = {
-        name : profile.displayName,
+        first_name : profile.displayName,
         username: profile.username,
         email : profile._json.email,
         photo: profile._json.avatar_url
